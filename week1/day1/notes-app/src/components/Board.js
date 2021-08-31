@@ -1,28 +1,62 @@
-import React, {Component} from "react"
-import "../css/Board.css"
-import Note from "./Note"
+import React, { Component } from "react";
+import "../css/Board.css";
+import Note from "./Note";
 
-class Board extends Component{
-	constructor(){
+class Board extends Component {
+	constructor() {
 		super();
+		this.state={
+			notes:[]
+		}
 	}
 
-	render (){
-		return(
+	addNote() {
+		let notes = this.state.notes;
+		notes.push({
+			id: Date.now(),
+		});
+
+		this.setState({ notes });
+	}
+
+	deleteNote(id) {
+		let newNoteArray = this.state.notes;
+		newNoteArray.map((note, index) => {
+			if (id === note.id) {
+				newNoteArray.splice(index, 1);
+			}
+		});
+
+		this.setState({ notes: newNoteArray });
+	}
+
+	render() {
+		return (
 			<div>
 				<div className="div-board">
 					<div className="row">
-						<Note title="Class Notes" body="Always drink your ovaltine"/>
-						<Note title="Bloop" body="blop"/>
-						<Note title="Bing" body="bong"/>
-						<Note/>
+						{
+						this.state.notes.map(note => 
+							<Note
+								key={note.id}
+								id={note.id}
+								title={note.title}
+								body={note.body}
+								deleteHandler={this.deleteNote.bind(this)}
+							/>)
+						}
 					</div>
 				</div>
 				<div>
-					<button className="btn btn-success add-button">Add</button>
+					<button
+						onClick={this.addNote.bind(this)}
+						className="btn btn-success add-button"
+					>
+						Add
+					</button>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
