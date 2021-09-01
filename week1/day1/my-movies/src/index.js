@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Collections from './components/Collection';
+import SuperCollection from './components/SuperCollection';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Collections />
+    <SuperCollection />
   </React.StrictMode>,
   document.getElementById('root')
 );

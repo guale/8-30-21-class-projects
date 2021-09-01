@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import "../css/Collection.css";
 import Movie from "./Movie";
 
+const GENERIC_COLLECTION_TITLE = "New Collection";
+
 class Collection extends Component {
 	constructor() {
 		super();
 		this.state = {
+			title: GENERIC_COLLECTION_TITLE,
 			movies: [],
 		};
+	}
+
+	componentWillMount(){
+		this.addMovie();
 	}
 
 	addMovie() {
