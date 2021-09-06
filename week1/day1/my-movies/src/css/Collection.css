@@ -1,4 +1,19 @@
-.div-collection{
-	border:1px solid;
-	border-radius: 5px;
+.card-title {
+	display: inline;
+}
+
+.title-input {
+	font-size: calc(1.325rem + 0.9vw);
+	font-weight: bold;
+	width: 100%;
+}
+
+.button-area {
+	display: inline;
+	position:absolute;
+	right:10px;
+}
+
+.card{
+	margin: 10px 0px;
 }

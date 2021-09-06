@@ -39,6 +39,7 @@ class SuperCollection extends Component {
 								key={collections.id}
 								id={collections.id}
 								title={collections.title}
+								deleteHandler={this.deleteCollection.bind(this)}
 							/>
 						))}
 					</div>
