@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+	<body>
+		<div id="message">
+		</div>
+
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
+			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+				apiKey: "AIzaSyAPRUZc3wtTl2b3vA1n4qoJshtJZZoFIKs",
+				authDomain: "tts-project-391a7.firebaseapp.com",
+				projectId: "tts-project-391a7",
+				storageBucket: "tts-project-391a7.appspot.com",
+				messagingSenderId: "436373318473",
+				appId: "1:436373318473:web:961b0a06cc2db909074898",
+				measurementId: "G-R2B5ZB3P0R",
+			};
+
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+
+			var message = document.getElementById("message");
+			var dbRef = firebase.database().ref().child("message");
+
+			dbRef.on('value', (snapshot) => message.innerText = snapshot.val())
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const loadEl = document.querySelector("#load");
+				// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+				// // The Firebase SDK is initialized and available here!
+				//
+				// firebase.auth().onAuthStateChanged(user => { });
+				// firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+				// firebase.firestore().doc('/foo/bar').get().then(() => { });
+				// firebase.functions().httpsCallable('yourFunction')().then(() => { });
+				// firebase.messaging().requestPermission().then(() => { });
+				// firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+				// firebase.analytics(); // call to activate
+				// firebase.analytics().logEvent('tutorial_completed');
+				// firebase.performance(); // call to activate
+				//
+				// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+				try {
+					let app = firebase.app();
+					let features = [
+						"auth",
+						"database",
+						"firestore",
+						"functions",
+						"messaging",
+						"storage",
+						"analytics",
+						"remoteConfig",
+						"performance",
+					].filter((feature) => typeof app[feature] === "function");
+					loadEl.textContent = `Firebase SDK loaded with ${features.join(
+						", "
+					)}`;
+				} catch (e) {
+					console.error(e);
+					loadEl.textContent =
+						"Error loading the Firebase SDK, check the console.";
+				}
+			});
+		</script>
+	</body>
+</html>
