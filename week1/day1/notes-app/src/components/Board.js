@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import "../css/Board.css";
 import Note from "./Note";
+import myFirebase from "../utility/myFirebase";
+import { onValue } from "firebase/database";
 
 class Board extends Component {
 	constructor() {
 		super();
-		this.state={
-			notes:[]
-		}
+		this.state = {
+			notes: [],
+		};
+		this.firebaseDBref = myFirebase.getFireBaseRef();
+		// this.firebaseDBref.once('value').then((snapshot) =>console.log(snapshot.val()));
+		onValue(this.firebaseDBref, (snapshot) => console.log(snapshot.val()), {
+			onlyOnce: true,
+		});
 	}
 
 	addNote() {
@@ -35,16 +42,15 @@ class Board extends Component {
 			<div>
 				<div className="div-board">
 					<div className="row">
-						{
-						this.state.notes.map(note => 
+						{this.state.notes.map((note) => (
 							<Note
 								key={note.id}
 								id={note.id}
 								title={note.title}
 								body={note.body}
 								deleteHandler={this.deleteNote.bind(this)}
-							/>)
-						}
+							/>
+						))}
 					</div>
 				</div>
 				<div>

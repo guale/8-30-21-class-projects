@@ -3,15 +3,21 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Welcome to Firebase Hosting</title>
 	</head>
 	<body>
-		<div id="message">
-		</div>
+		<div id="message"></div>
 
 		<script type="module">
 			// Import the functions you need from the SDKs you need
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
 			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
+			import {
+				getDatabase,
+				ref,
+				onValue,
+				set,
+			} from "https://www.gstatic.com/firebasejs/9.0.1/firebase-database.js";
 			// TODO: Add SDKs for Firebase products that you want to use
 			// https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,21 +29,22 @@
 				projectId: "tts-project-391a7",
 				storageBucket: "tts-project-391a7.appspot.com",
 				messagingSenderId: "436373318473",
-				appId: "1:436373318473:web:961b0a06cc2db909074898",
-				measurementId: "G-R2B5ZB3P0R",
+				appId: "1:436373318473:web:25e75a9db206a746074898",
+				measurementId: "G-YWSH0SGT3M",
 			};
 
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
 			const analytics = getAnalytics(app);
+			const db = getDatabase();
 
 			var message = document.getElementById("message");
-			var dbRef = firebase.database().ref().child("message");
+			var dbRef = ref(db, "message");
 
-			dbRef.on('value', (snapshot) => message.innerText = snapshot.val())
+			onValue(dbRef, (snapshot) => (message.innerText = snapshot.val()));
 		</script>
 
-		<script>
+		<!-- <script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const loadEl = document.querySelector("#load");
 				// // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
@@ -77,6 +84,6 @@
 						"Error loading the Firebase SDK, check the console.";
 				}
 			});
-		</script>
+		</script> -->
 	</body>
 </html>
