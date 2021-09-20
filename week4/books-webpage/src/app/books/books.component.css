@@ -1,0 +1,22 @@
+.bookTitle>h2, .bookTitle>h3{
+	display:inline;
+}
+
+.bookTitle {
+	padding-top: 20px;
+	padding: 20px;
+	background-color:#eeeeff;
+}
+
+.bookCard{
+	border: 1px black solid;
+	border-radius: 10px;
+	overflow:hidden;
+	margin:5px;
+}
+
+ul {
+	list-style-type: none; /* Remove bullets */
+	padding: 0; /* Remove padding */
+	margin: 0; /* Remove margins */
+  }
