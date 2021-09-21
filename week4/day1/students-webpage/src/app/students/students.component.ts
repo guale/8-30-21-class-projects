@@ -1,23 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../student';
-
-import { STUDENTS } from '../mock-students';
+import { StudentService } from '../student.service';
+import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css'],
+	selector: 'app-students',
+	templateUrl: './students.component.html',
+	styleUrls: ['./students.component.css'],
 })
 export class StudentsComponent implements OnInit {
-  students = STUDENTS
+	students?: Student[];
 
-  selectedStudent?: Student;
+	getStudents(): void {
+		this.studentService
+			.getStudents()
+			.subscribe((students) => (this.students = students));
+	}
 
-  constructor() {}
+	selectedStudent?: Student;
 
-  ngOnInit(): void {}
+	constructor(private studentService: StudentService, private messageService: MessageService) {}
 
-  onSelect(student: Student): void {
-    this.selectedStudent=student;
-  }
+	ngOnInit(): void {
+		this.getStudents();
+	}
+
+	onSelect(student: Student): void {
+		this.selectedStudent = student;
+		this.messageService.add(`StudentComponent: Selected student id=${student.id}`);
+	}
 }
