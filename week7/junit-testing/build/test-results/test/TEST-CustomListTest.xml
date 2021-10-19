@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CustomListTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-10-19T16:18:21" hostname="ARON-DESKTOP" time="0.061">
+  <properties/>
+  <testcase name="givenListWithAnElement_whenAnotherIsAdded_thenGetReturnsBoth()" classname="CustomListTest" time="0.045"/>
+  <testcase name="givenListWithAnElement_whenGet_thenThatElementIsReturned()" classname="CustomListTest" time="0.003"/>
+  <testcase name="givenListWithElement_whenSize_thenOneIsReturned()" classname="CustomListTest" time="0.001"/>
+  <testcase name="givenEmptyList_whenIsEmpty_thenTrueIsReturned()" classname="CustomListTest" time="0.001"/>
+  <testcase name="givenListWithSecondElement_whenGet_thenThatElementIsReturned()" classname="CustomListTest" time="0.001"/>
+  <testcase name="givenListWithoutElement_whenSize_thenZeroIsReturned()" classname="CustomListTest" time="0.001"/>
+  <testcase name="givenListWithNumElement_whenSize_thenNumIsReturned()" classname="CustomListTest" time="0.001"/>
+  <testcase name="givenNonEmptyList_whenIsEmpty_thenFalseIsReturned()" classname="CustomListTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
